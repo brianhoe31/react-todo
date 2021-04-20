@@ -6,6 +6,7 @@ class Todo extends Component {
         super(props);
         this.handleComplete = this.handleComplete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     handleComplete(e){
@@ -16,11 +17,15 @@ class Todo extends Component {
         this.props.deleteTodo(this.props.id);
     }
 
+    handleEdit(e){
+        this.props.editTodo(this.props.id);
+    }
+
     render(){
         return(
             <div className="Todo">
                 <p onClick={this.handleComplete} className={this.props.complete ? "strike" : ""}>{this.props.item}</p>
-                <button>Edit</button>
+                <button onClick={this.handleEdit}>Edit</button>
                 <button onClick={this.handleDelete}>Delete</button>
             </div>
         )
